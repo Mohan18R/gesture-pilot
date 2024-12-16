@@ -1,40 +1,33 @@
 # Gesture Pilot
 
-
-This project is a hand gesture-based control system that allows you to interact with your computer using simple hand gestures. It uses a webcam to capture hand movements and mediapipe to detect hand landmarks, which are then mapped to various actions like controlling the mouse cursor, adjusting volume, and taking screenshots.
+This project is a **real-time hand gesture control system** that uses a webcam to detect hand gestures and perform various actions like controlling the mouse cursor, taking screenshots, controlling volume, and navigating media files. The application utilizes **MediaPipe**, **OpenCV**, and **PyAutoGUI** to achieve gesture recognition and device control.
 
 ## Features
-- **Control mouse movement** using your index finger.
-- **Click actions** are performed by making a fist.
-- **Adjust system volume** by bringing two hands close together or apart.
-- **Press media keys** like play/pause, next, and previous using predefined finger gestures.
-- **Take screenshots** by using a specific gesture.
-- Works in **real-time** with accurate hand tracking.
-  
-## How It Works
-This system uses a webcam feed to capture hand movements and then detects hand landmarks using the `mediapipe` library. Based on the position of the hand landmarks, various actions are performed such as:
-- Moving the mouse cursor.
-- Adjusting system volume by measuring the distance between hands.
-- Taking screenshots or navigating through media using specific gestures.
 
-## Gesture Controls
-| Gesture                | Action          |
-|------------------------|-----------------|
-| All fingers up          | Play/Pause      |
-| Thumb and Pinky Up      | Next Track      |
-| Thumb, Index, and Pinky Up | Previous Track |
-| All fingers except Thumb up | Increase Volume |
-| All fingers except Thumb and Pinky up | Decrease Volume |
-| Thumb and Index Outstretched | Mouse Move |
-| Thumb curled and Index finger pointed | Mouse Click |
-| Victory Sign (Index & Middle Fingers Up) | Take Screenshot |
+- **Cursor Control**: Move the cursor using the index finger with smooth Kalman Filter-based movement.
+- **Media Control**: Navigate media files using specific hand gestures.
+  - `Next (Right Arrow)` - Gesture: Index finger and pinky up.
+  - `Previous (Left Arrow)` - Gesture: Index, middle finger, and pinky up.
+  - `Play/Pause (Space)` - Gesture: All fingers up.
+- **Volume Control**: Adjust volume by measuring the distance between fingertips of two hands.
+- **Screenshot**: Take a screenshot with a specific gesture.
+- **Click**: Perform a left-click using thumb gestures.
 
-## Project Setup
-To run this project, you need Python 3.8.2 and the following libraries:
+## Technologies Used
+
+- **Python**: Programming language.
+- **OpenCV**: For real-time webcam feed and image processing.
+- **MediaPipe**: For hand landmark detection.
+- **PyAutoGUI**: For controlling mouse and keyboard inputs.
+- **PyCaw**: For system audio volume control.
+- **FilterPy**: For Kalman Filter-based cursor smoothing.
+
+## Prerequisites
+
+Before running this project, ensure you have the following installed:
+
+- Python 3.7 or higher
+- Required Python libraries (install them using the command below):
+
 ```bash
-pip install mediapipe
-pip install opencv-python 
-pip install pyautogui 
-pip install numpy
-pip install comtypes
-pip install pycaw
+pip install opencv-python mediapipe pyautogui filterpy pycaw numpy
